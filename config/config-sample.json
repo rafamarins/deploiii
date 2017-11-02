@@ -1,0 +1,26 @@
+//INPUT YOUR DETAILS
+//FINALLY, YOU MUST RENAME THIS FILE TO "config.json"
+{
+    "app": {
+        "paths": {
+            "dist": "", // Distribution Folder
+            "styles": "", // SASS stylesheet Folder
+            "scripts": "" // Scripts Folder
+        },
+        "outputfilename": {
+            "scripts": "bundle.js", // Output filename for Uglified file
+            "css": "bundle.css" // Output filename for CSS file
+        },
+        "watch": {
+            "styles": "/*.css", // Folder that Gulp should watch Styles and pushed to Server on changes
+            "scripts": "/*.js" // Folder that Gulp should watch Scripts and pushed to Server on changes
+        }
+    },
+    "ftp": {
+        "host": "",
+        "user": "",
+        "password": "",
+        "port": 21,
+        "base": ""
+    }
+}

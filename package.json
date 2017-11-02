@@ -1,0 +1,45 @@
+{
+    "name": "deploiii",
+    "version": "0.0.1",
+    "description": "Deployment Framework JS & CSS + FTP",
+    "main": " ",
+    "scripts": {
+        "watch": "gulp",
+        "build": "gulp production"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rafamarins/deploiii.git"
+    },
+    "keywords": [
+        "Deploiii"
+    ],
+    "author": "Rafael Marins",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/rafamarins/deploiii/issues"
+    },
+    "devDependencies": {
+        "app-root-path": "^2.0.1",
+        "del": "^3.0.0",
+        "gulp": "github:gulpjs/gulp#4.0",
+        "gulp-autoprefixer": "^4.0.0",
+        "gulp-util": "^3.0.8",
+        "gulp-batch": "^1.0.5",
+        "gulp-concat": "^2.6.1",
+        "gulp-imagemin": "^3.3.0",
+        "gulp-inject-string": "^1.1.0",
+        "gulp-insert": "^0.5.0",
+        "gulp-javascript-obfuscator": "^1.1.2",
+        "gulp-notify": "^3.0.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-sass": "^3.1.0",
+        "gulp-uglify": "^3.0.0",
+        "gulp-watch": "^4.3.11",
+        "pump": "^1.0.2",
+        "require-dir": "^0.3.2",
+        "run-sequence": "^2.0.0",
+        "vinyl-ftp": "^0.6.0"
+    },
+    "homepage": "https://github.com/rafamarins/deploiii#readme"
+}
