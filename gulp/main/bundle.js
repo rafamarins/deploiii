@@ -12,7 +12,7 @@ gulp.task('clean_bundle', (done) => {
 gulp.task('sass_autoprefixer_bundle', (done) => {
     run_sass_autoprefixer([appRoot.path + config.app.paths.styles + '/main.scss'] // Source
         , appRoot.path + config.app.paths.dist + 'styles' // Destination
-        , { "outputStyle": "compressed" } //Sass Config - Hubspot doesn't like compressed css
+        , { "outputStyle": "compressed" } // Sass
         , { "browsers": ['last 10 versions'], "cascade": false } // Autoprefixer Config
     );
     done();
