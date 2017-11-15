@@ -54,7 +54,11 @@ npm run watch
 Once you have a final version for your scripts, you can obfuscate them by running the obfuscate task
 
 ```
-gulp obfuscate
+gulp production
+```
+or use node tasks
+```
+npm run production
 ```
 
 ## Authors
