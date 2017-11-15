@@ -54,7 +54,7 @@ Edit as per required to your project.
 -- config-sample.json
 ```
 
-*Important - You need to rename this file to config.json. The project will look for the config.json file for it's specific details.
+*Important - You need to rename this file to config.json. The project will look for the config.json file for it's specific details.*
 
 ## Running - Deploying
 
