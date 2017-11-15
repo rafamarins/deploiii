@@ -37,12 +37,16 @@ Copy all files to your project.
 Keep in mind of package.json file which contains most of the packages used in this project.
 ```
 
-## Running the tests
+## Running
 
-Simple run
+Simply run
 
 ```
 gulp
+```
+or use node tasks
+```
+npm run watch
 ```
 
 ## Deployment
