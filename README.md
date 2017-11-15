@@ -7,8 +7,13 @@ Small basic Node + Gulp framework to compile SASS & Uglify scripts and finally u
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
+Node is required.
+You can download it from here
+```
+https://nodejs.org/en/
+```
 
-All the packages below are required. Just install them with NPM
+All the packages below are required.
 
 ```
 app-root-path
@@ -36,8 +41,20 @@ A step by step series of examples that tell you have to get a development env ru
 Copy all files to your project. 
 Keep in mind of package.json file which contains most of the packages used in this project.
 ```
+Then install the packages
+```
+npm install
+```
+## Config
 
-## Running
+You'll need to add your specific configs in the files living the config folder. You can find a config-sample.json file there.
+Edit as per required to your project.
+```
+- config
+-- config-sample.json
+```
+
+## Running - Deploying
 
 Simply run
 
@@ -49,7 +66,9 @@ or use node tasks
 npm run watch
 ```
 
-## Deployment
+Once the task is running your css/js files will be watched and on any updates the files will get compiled into the output bundle and then uploaded to the FTP.
+
+## Extra Features
 
 Once you have a final version for your scripts, you can obfuscate them by running the obfuscate task
 
