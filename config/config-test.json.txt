@@ -1,0 +1,31 @@
+{
+    "app": {
+        "paths": {
+            "dist": "/assets/",
+            "distCSS": "css/",
+            "distJS": "js/",
+            "styles": "/src/sass/",
+            "scripts": "/src/scripts/"
+        },
+        "outputfilename": {
+            "scripts": "bundle.js",
+            "css": "bundle.css"
+        },
+        "inputfilename": {
+            "css": "main.scss"
+        },
+        "watch": {
+            "styles": "css/*.css",
+            "scripts": "js/*.js"
+        }
+    },
+    "ftp": {
+        "enabled": false,
+        "host": "",
+        "user": "",
+        "password": "",
+        "port": 0,
+        "sftp": null,
+        "base": ""
+    }
+}
