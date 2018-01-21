@@ -11,6 +11,7 @@ module.exports = function() {
     this.rename = require('gulp-rename');
     this.notify = require('gulp-notify');
     this.obfuscator = require('gulp-javascript-obfuscator');
+    this.touch = require('gulp-touch-cmd');
     this.del = require('del');
     this.pump = require('pump');
     this.gutil = require('gulp-util');
