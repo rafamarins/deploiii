@@ -9,9 +9,13 @@ module.exports = function() {
             autoprefixer({
                 browsers: autoprefixerConfig.browsers,
                 cascade: autoprefixerConfig.cascade
+            }).on('error', function(err) {
+                gutil.log(gutil.colors.red('[Error]'), err.toString())
+                this.emit('end')
             }),
             rename(config.app.outputfilename.css),
-            gulp.dest(destination)
+            gulp.dest(destination),
+            touch() // For some reason, the output bundle wasn't updating its last modifed date, so add this to make sure if does that.
         ]);
     }
 
@@ -20,7 +24,10 @@ module.exports = function() {
             gulp.src(src),
             concat(config.app.outputfilename.scripts),
             gulp.dest(destination),
-            uglify(),
+            uglify().on('error', function(err) {
+                gutil.log(gutil.colors.red('[Error]'), err.toString())
+                this.emit('end')
+            }),
             gulp.dest(destination)
         ]);
     }
@@ -33,6 +40,9 @@ module.exports = function() {
             obfuscator({
                 compact: true,
                 sourceMap: true,
+            }).on('error', function(err) {
+                gutil.log(gutil.colors.red('[Error]'), err.toString())
+                this.emit('end')
             }),
             gulp.dest(destination)
         ]);
@@ -47,7 +57,7 @@ module.exports = function() {
             port: config.ftp.port,
             parallel: 5,
             reload: true,
-            secure: true,
+            secure: config.ftp.sftp,
             log: gutil.log
         });
 

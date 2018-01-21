@@ -1,9 +1,12 @@
 //INPUT YOUR DETAILS
 //FINALLY, YOU MUST RENAME THIS FILE TO "config.json"
+//REMOVE COMMENTS FROM YOUR config.json, COMMENTS ARE NOT ALLOWED
 {
     "app": {
         "paths": {
             "dist": "", // Distribution Folder
+            "distCSS": "", // Distribution CSS Folder
+            "distJS": "", // Distribution JS Folder
             "styles": "", // SASS stylesheet Folder
             "scripts": "" // Scripts Folder
         },
@@ -11,16 +14,20 @@
             "scripts": "bundle.js", // Output filename for Uglified file
             "css": "bundle.css" // Output filename for CSS file
         },
+        "inputfilename": {
+            "css": "main.scss"
+        },
         "watch": {
             "styles": "/*.css", // Folder that Gulp should watch Styles and pushed to Server on changes
             "scripts": "/*.js" // Folder that Gulp should watch Scripts and pushed to Server on changes
         }
     },
     "ftp": {
-        "host": "",
-        "user": "",
-        "password": "",
-        "port": 21,
-        "base": ""
+        "enabled": false, // For hubspot users, default should be true
+        "host": "", // FTP host addrress
+        "user": "", // FTP user
+        "password": "", // FTP password
+        "port": 21, // FTP port. default
+        "base": "" // FTP BASE FOLDER WHERE THE BUNDLE FILES SHOULD BE UPLOADED/UPDATED
     }
 }
