@@ -25,6 +25,7 @@
         "browserslist": "^2.11.3",
         "cssnano": "^3.10.0",
         "del": "^3.0.0",
+        "eslint": "^4.17.0",
         "eslint-plugin-compat": "^2.2.0",
         "gulp": "github:gulpjs/gulp#4.0",
         "gulp-concat": "^2.6.1",
@@ -50,5 +51,7 @@
         "> 1%",
         "last 20 versions",
         "not ie <= 8"
-    ]
+    ],
+    "dependencies": { 
+    }
 }
