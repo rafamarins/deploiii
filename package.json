@@ -21,20 +21,34 @@
     },
     "devDependencies": {
         "app-root-path": "^2.0.1",
+        "autoprefixer": "^7.2.5",
+        "browserslist": "^2.11.3",
+        "cssnano": "^3.10.0",
         "del": "^3.0.0",
+        "eslint-plugin-compat": "^2.2.0",
         "gulp": "github:gulpjs/gulp#4.0",
-        "gulp-autoprefixer": "^4.0.0",
-        "gulp-util": "^3.0.8",
         "gulp-concat": "^2.6.1",
         "gulp-javascript-obfuscator": "^1.1.2",
         "gulp-notify": "^3.0.0",
+        "gulp-postcss": "^7.0.1",
         "gulp-rename": "^1.2.2",
         "gulp-sass": "^3.1.0",
+        "gulp-touch-cmd": "0.0.1",
         "gulp-uglify": "^3.0.0",
+        "gulp-util": "^3.0.8",
         "gulp-watch": "^4.3.11",
+        "postcss-normalize": "^4.0.0",
         "pump": "^1.0.2",
         "require-dir": "^0.3.2",
+        "sass-lint": "^1.12.1",
+        "stylelint": "^8.4.0",
+        "stylelint-no-unsupported-browser-features": "^2.0.0",
         "vinyl-ftp": "^0.6.0"
     },
-    "homepage": "https://github.com/rafamarins/deploiii#readme"
+    "homepage": "https://github.com/rafamarins/deploiii#readme",
+    "browserslist": [
+        "> 1%",
+        "last 20 versions",
+        "not ie <= 8"
+    ]
 }

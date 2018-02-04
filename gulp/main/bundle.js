@@ -5,25 +5,23 @@ require('../misc/dependencies.js')();
 /* Main.css */
 
 gulp.task('clean_bundle', (done) => {
-    clean([appRoot.path + config.app.paths.dist + config.app.paths.distCSS]);
+    clean([appRoot.path + config.app.paths.dist + 'styles']);
     done();
 });
 
 gulp.task('sass_autoprefixer_bundle', (done) => {
-    run_sass_autoprefixer([appRoot.path + config.app.paths.styles + "/" + config.app.inputfilename.css] // Source
-        , appRoot.path + config.app.paths.dist + config.app.paths.distCSS // Destination
-        , { "outputStyle": "compressed" } //Sass Config
-        , { "browsers": ['last 10 versions'], "cascade": false } // Autoprefixer Config
+    run_sass_autoprefixer([appRoot.path + config.app.paths.styles + '/main.scss'] // Source
+        , appRoot.path + config.app.paths.dist + 'styles' // Destination
+        , {} //Sass Config
+        , {} // Autoprefixer Config
     );
     done();
 });
 
 gulp.task('pushSytles', (done) => {
-    if (config.ftp.enabled) {
-        setTimeout(function() {
-            uploadStyles();
-        }, 2000); // Timeout just to be sure everything has finished to be written
-    }
+    setTimeout(function() {
+        uploadStyles();
+    }, 2000); // Timeout just to be sure everything has finished to be written
     done();
 });
 
@@ -34,21 +32,19 @@ function styles_bundle(done) {
 }
 
 gulp.task('pushScripts', (done) => {
-    if (config.ftp.enabled) {
-        setTimeout(function() {
-            uploadScripts();
-        }, 500);
-    }
+    setTimeout(function() {
+        uploadScripts();
+    }, 500);
     done();
 });
 
 gulp.task('obfuscate', (done) => {
-    obfuscate(appRoot.path + config.app.paths.scripts + '/**/*.js', appRoot.path + config.app.paths.dist + config.app.paths.distJS);
+    obfuscate(appRoot.path + config.app.paths.scripts + '/**/*.js', appRoot.path + config.app.paths.dist + '/scripts');
     done();
 });
 
 gulp.task('uglify', (done) => {
-    run_uglify(appRoot.path + config.app.paths.scripts + '**/*.js', appRoot.path + config.app.paths.dist + config.app.paths.distJS);
+    run_uglify(appRoot.path + config.app.paths.scripts + '**/*.js', appRoot.path + config.app.paths.dist + 'scripts');
     done();
 });
 
