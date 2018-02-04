@@ -1,6 +1,6 @@
 # Deploiii
 
-Small basic Node + Gulp framework to compile SASS & Uglify scripts and finally upload to server via FTP
+Small basic Node + Gulp framework to compile SASS & Uglify scripts and optionally upload to server via FTP
 
 ## Getting Started
 
@@ -17,9 +17,13 @@ All the packages below are required.
 
 ```
 app-root-path
+autoprefixer
+browserslist
+cssnano
 del
 gulp - "github:gulpjs/gulp#4.0" *IMPORTANT, THIS PROJECT RUNS ON GULP 4.0, IT WON'T WORK ON EARLIER VERSIONS
-gulp-autoprefixer
+autoprefixer
+gulp-postcss
 gulp-util
 gulp-concat
 gulp-javascript-obfuscator
@@ -28,6 +32,7 @@ gulp-rename
 gulp-sass
 gulp-uglify
 gulp-watch
+postcss-normalize
 pump
 require-dir
 vinyl-ftp
