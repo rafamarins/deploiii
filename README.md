@@ -52,14 +52,12 @@ npm install
 ```
 ## Config
 
-You'll need to add your specific configs in the files living the config folder. You can find a config-sample.json file there.
+You'll need to add your specific configs in the file living the config folder. You can find a config-sample.json.txt file there for reference.
 Edit as per required to your project.
 ```
 - config
 -- config-sample.json
 ```
-
-*Important - You need to rename this file to config.json. The project will look for the config.json file for it's specific details.*
 
 ## Running - Deploying
 

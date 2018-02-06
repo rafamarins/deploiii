@@ -44,6 +44,9 @@ module.exports = function() {
             obfuscator({
                 compact: true,
                 sourceMap: true
+            }).on('error', function(err) {
+                gutil.log(gutil.colors.red('[Error]'), err.toString())
+                this.emit('end')
             }),
             gulp.dest(destination)
         ])
@@ -74,28 +77,28 @@ module.exports = function() {
     }
 
     this.uploadStyles = function() {
-        var base = config.ftp.base
-        var rootDist = appRoot.path + config.app.paths.dist
+        var base = config.ftp.base;
+        var rootDist = appRoot.path + config.app.paths.dist;
 
         var globs = [
             rootDist + config.app.watch.styles
         ]
 
-        push(globs, base, true)
+        push(globs, base, true);
     }
 
     this.uploadScripts = function() {
-        var base = config.ftp.base
-        var rootDist = appRoot.path + config.app.paths.dist
+        var base = config.ftp.base;
+        var rootDist = appRoot.path + config.app.paths.dist;
 
         var globs = [
             rootDist + config.app.watch.scripts
         ]
 
-        push(globs, base, false)
+        push(globs, base, false);
     }
 
     this.clean = function(path) {
-        del(path)
+        del(path);
     }
 }
