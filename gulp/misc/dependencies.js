@@ -19,5 +19,6 @@ module.exports = function() {
     this.postcss = require('gulp-postcss');
     this.cssnano = require('cssnano');
     this.postcssnormalize = require('postcss-normalize');
+    this.fs = require('fs');
     this.utils = require('./utils.js')();
 }
