@@ -25,6 +25,7 @@
         "user": "",
         "password": "",
         "port": 21,
+        "sftp": true,
         "base": ""
     }
 }

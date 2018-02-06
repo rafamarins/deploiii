@@ -2,7 +2,7 @@
 {
     "app": {
         "paths": {
-            "dist": "/src/dist", // Distribution Folder
+            "dist": "/src/dist/", // Distribution Folder
             "distCSS": "css/", // Distribution CSS Folder
             "distJS": "js/", // Distribution JS Folder
             "styles": "/src/sass/", // SASS stylesheet Folder
