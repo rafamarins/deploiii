@@ -63,17 +63,22 @@ module.exports = function() {
             secure: config.ftp.sftp,
             log: gutil.log
         })
-
-        // turn off buffering in gulp.src for best performance
-        return pump([
-            gulp.src(globs, { cwd: '/', buffer: false }) //
-            , conn.newerOrDifferentSize(dest) // only upload newer files
-            , conn.dest(dest) //
-            , notify({
-                message: 'Finished deployment.',
-                onLast: true
-            })
-        ])
+        if (fs.existsSync(globs[0])) {
+            // turn off buffering in gulp.src for best performance
+            return pump([
+                gulp.src(globs, { cwd: '/', buffer: false }) //
+                , conn.newerOrDifferentSize(dest) // only upload newer files
+                , conn.dest(dest) //
+                , notify({
+                    message: 'Finished deployment.',
+                    onLast: true
+                })
+            ])
+        }
+        else{
+            gutil.log(gutil.colors.red('[Error]'), "Dist file doesn't exists, please verify your paths & files -> " + globs[0]);
+            return null;
+        }
     }
 
     this.uploadStyles = function() {
