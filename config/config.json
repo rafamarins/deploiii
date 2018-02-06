@@ -1,0 +1,30 @@
+{
+    "app": {
+        "paths": {
+            "dist": "",
+            "distCSS": "",
+            "distJS": "",
+            "styles": "",
+            "scripts": ""
+        },
+        "outputfilename": {
+            "scripts": "",
+            "css": ""
+        },
+        "inputfilename": {
+            "css": ""
+        },
+        "watch": {
+            "styles": "",
+            "scripts": ""
+        }
+    },
+    "ftp": {
+        "enabled": false,
+        "host": "",
+        "user": "",
+        "password": "",
+        "port": 21,
+        "base": ""
+    }
+}

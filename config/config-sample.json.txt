@@ -1,0 +1,32 @@
+//SAMPLE FILE
+{
+    "app": {
+        "paths": {
+            "dist": "/src/dist", // Distribution Folder
+            "distCSS": "css/", // Distribution CSS Folder
+            "distJS": "js/", // Distribution JS Folder
+            "styles": "/src/sass/", // SASS stylesheet Folder
+            "scripts": "/src/scripts/" // Scripts Folder
+        },
+        "outputfilename": {
+            "scripts": "bundle.js", // Output filename for Uglified file
+            "css": "bundle.css" // Output filename for CSS file
+        },
+        "inputfilename": {
+            "css": "main.scss" // Main SASS file with all your imports
+        },
+        "watch": {
+            "styles": "css/*.css", // Folder that Gulp should watch Styles and pushed to Server on changes
+            "scripts": "js/*.js" // Folder that Gulp should watch Scripts and pushed to Server on changes
+        }
+    },
+    "ftp": {
+        "enabled": false, // Enables Ftp Deployment
+        "host": "", // FTP host addrress
+        "user": "", // FTP user
+        "password": "", // FTP password
+        "port": 0, // FTP port. default
+        "sftp": null, // For hubspot users, default should be true
+        "base": "" // FTP BASE FOLDER WHERE THE BUNDLE FILES SHOULD BE UPLOADED/UPDATED
+    }
+}

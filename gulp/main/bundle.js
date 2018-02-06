@@ -5,13 +5,13 @@ require('../misc/dependencies.js')();
 /* Main.css */
 
 gulp.task('clean_bundle', (done) => {
-    clean([appRoot.path + config.app.paths.dist + 'styles']);
+    clean([appRoot.path + config.app.paths.dist + config.app.paths.distCSS]);
     done();
 });
 
 gulp.task('sass_autoprefixer_bundle', (done) => {
-    run_sass_autoprefixer([appRoot.path + config.app.paths.styles + '/main.scss'] // Source
-        , appRoot.path + config.app.paths.dist + 'styles' // Destination
+    run_sass_autoprefixer([appRoot.path + config.app.paths.styles + "/" + config.app.inputfilename.css] // Source
+        , appRoot.path + config.app.paths.dist + config.app.paths.distCSS // Destination
         , {} //Sass Config
         , {} // Autoprefixer Config
     );
@@ -19,9 +19,11 @@ gulp.task('sass_autoprefixer_bundle', (done) => {
 });
 
 gulp.task('pushSytles', (done) => {
-    setTimeout(function() {
-        uploadStyles();
-    }, 2000); // Timeout just to be sure everything has finished to be written
+    if (config.ftp.enabled) {
+        setTimeout(function() {
+            uploadStyles();
+        }, 2000); // Timeout just to be sure everything has finished to be written
+    }
     done();
 });
 
@@ -32,19 +34,21 @@ function styles_bundle(done) {
 }
 
 gulp.task('pushScripts', (done) => {
-    setTimeout(function() {
-        uploadScripts();
-    }, 500);
+    if (config.ftp.enabled) {
+        setTimeout(function() {
+            uploadScripts();
+        }, 500);
+    }
     done();
 });
 
 gulp.task('obfuscate', (done) => {
-    obfuscate(appRoot.path + config.app.paths.scripts + '/**/*.js', appRoot.path + config.app.paths.dist + '/scripts');
+    obfuscate(appRoot.path + config.app.paths.scripts + '/**/*.js', appRoot.path + config.app.paths.dist + config.app.paths.distJS);
     done();
 });
 
 gulp.task('uglify', (done) => {
-    run_uglify(appRoot.path + config.app.paths.scripts + '**/*.js', appRoot.path + config.app.paths.dist + 'scripts');
+    run_uglify(appRoot.path + config.app.paths.scripts + '**/*.js', appRoot.path + config.app.paths.dist + config.app.paths.distJS);
     done();
 });
 
