@@ -63,7 +63,9 @@ module.exports = function() {
             secure: config.ftp.sftp,
             log: gutil.log
         })
-        if (fs.existsSync(globs[0])) {
+        
+        //validates if parent folder path exists
+        if (fs.existsSync(globs[0].substring(0, globs[0].lastIndexOf("/")))) {
             // turn off buffering in gulp.src for best performance
             return pump([
                 gulp.src(globs, { cwd: '/', buffer: false }) //
