@@ -2,25 +2,28 @@
 
 module.exports = function() {
     this.run_sass_autoprefixer = function(src, destination, sassConfig, autoprefixerConfig) {
-        var plugins = [
-            postcssnormalize,
-            autoprefixer,
-            cssnano
-        ];
-        pump([
-            gulp.src(src),
-            sass().on('error', function(err) {
-                gutil.log(gutil.colors.red('[Error]'), err.toString())
-                this.emit('end')
-            }),
-            postcss(plugins).on('error', function(err) {
-                gutil.log(gutil.colors.red('[Error]'), err.toString())
-                this.emit('end')
-            }),
-            rename(config.app.outputfilename.css),
-            gulp.dest(destination),
-            touch() // For some reason, the output bundle wasn't updating its last modifed date, so add this to make sure if does that.
-        ])
+        if (filepathExists(src)) {
+            var plugins = [
+                postcssnormalize,
+                autoprefixer,
+                cssnano
+            ];
+            pump([
+                gulp.src(src),
+                sass().on('error', function(err) {
+                    gutil.log(gutil.colors.red('[Error]'), err.toString())
+                    this.emit('end')
+                }),
+                postcss(plugins).on('error', function(err) {
+                    gutil.log(gutil.colors.red('[Error]'), err.toString())
+                    this.emit('end')
+                }),
+                rename(config.app.outputfilename.css),
+                gulp.dest(destination),
+                touch() // For some reason, the output bundle wasn't updating its last modifed date, so add this to make sure if does that.
+            ])
+        } else
+            return null;
     }
 
     this.run_uglify = function(src, destination) {
@@ -52,6 +55,15 @@ module.exports = function() {
         ])
     }
 
+    function filepathExists(path) {
+        if (fs.existsSync(path)) {
+            return true;
+        } else {
+            gutil.log(gutil.colors.red('[Error]'), "File doesn't exists, please verify your paths & files -> " + path);
+            return false;
+        }
+    }
+
     function push(globs, dest, styles) {
         var conn = ftp.create({
             host: config.ftp.host,
@@ -63,7 +75,7 @@ module.exports = function() {
             secure: config.ftp.sftp,
             log: gutil.log
         })
-        
+
         //validates if parent folder path exists
         if (fs.existsSync(globs[0].substring(0, globs[0].lastIndexOf("/")))) {
             // turn off buffering in gulp.src for best performance
@@ -76,8 +88,7 @@ module.exports = function() {
                     onLast: true
                 })
             ])
-        }
-        else{
+        } else {
             gutil.log(gutil.colors.red('[Error]'), "Dist file doesn't exists, please verify your paths & files -> " + globs[0]);
             return null;
         }
