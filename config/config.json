@@ -8,8 +8,12 @@
             "scripts": ""
         },
         "outputfilename": {
-            "scripts": "",
-            "css": ""
+            "babelEnabled" : false,
+            "uglifyEnabled": false,
+            "filename": {
+                "scripts": "",
+                "css": ""
+            }
         },
         "inputfilename": {
             "css": ""

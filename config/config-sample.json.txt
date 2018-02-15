@@ -9,8 +9,12 @@
             "scripts": "/src/scripts/" // Scripts Folder
         },
         "outputfilename": {
-            "scripts": "bundle.js", // Output filename for Uglified file
-            "css": "bundle.css" // Output filename for CSS file
+            "babelEnabled" : false, //Enables Babel JS Transpiling 
+            "uglifyEnabled": false, // Enables Uglyfying JS
+            "filename": {
+                "scripts": "bundle.js", // Output filename for Uglified file
+                "css": "bundle.css" // Output filename for CSS file
+            }
         },
         "inputfilename": {
             "css": "main.scss" // Main SASS file with all your imports
