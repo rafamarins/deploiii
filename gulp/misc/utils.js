@@ -12,12 +12,14 @@ module.exports = function() {
             sass().on('error', function(err) {
                 gutil.log(gutil.colors.red('[Error]'), err.toString())
                 this.emit('end')
+                return false
             }),
             postcss(plugins).on('error', function(err) {
                 gutil.log(gutil.colors.red('[Error]'), err.toString())
                 this.emit('end')
+                return false
             }),
-            rename(config.app.outputfilename.css),
+            rename(config.app.output.filename.css),
             gulp.dest(destination),
             touch() // For some reason, the output bundle wasn't updating its last modifed date, so add this to make sure if does that.
         ])
@@ -26,13 +28,25 @@ module.exports = function() {
     this.run_uglify = function(src, destination) {
         pump([
             gulp.src(src),
-            concat(config.app.outputfilename.scripts),
-            gulp.dest(destination),
-            uglify().on('error', function(err) {
-                gutil.log(gutil.colors.red('[Error]'), err.toString())
-                this.emit('end')
-            }),
-            gulp.dest(destination)
+            sourcemaps.init(),
+            gulpif(config.app.output.babelEnabled == true,
+                babel().on('error', function(err) {
+                    gutil.log(gutil.colors.red('[Error]'), err.toString())
+                    this.emit('end')
+                    return false
+                })
+            ),
+            concat(config.app.output.filename.scripts),
+            sourcemaps.write('.'),
+            gulp.dest(destination),            
+            gulpif(config.app.output.uglifyEnabled == true, 
+                uglify().on('error', function(err) {
+                    gutil.log(gutil.colors.red('[Error]'), err.toString())
+                    this.emit('end')
+                    return false 
+                }),
+                gulp.dest(destination)
+            )
         ])
     }
 
@@ -47,6 +61,7 @@ module.exports = function() {
             }).on('error', function(err) {
                 gutil.log(gutil.colors.red('[Error]'), err.toString())
                 this.emit('end')
+                return false
             }),
             gulp.dest(destination)
         ])
@@ -84,28 +99,28 @@ module.exports = function() {
     }
 
     this.uploadStyles = function() {
-        var base = config.ftp.base;
-        var rootDist = appRoot.path + config.app.paths.dist;
+        var base = config.ftp.base
+        var rootDist = appRoot.path + config.app.paths.dist
 
         var globs = [
             rootDist + config.app.watch.styles
         ]
 
-        push(globs, base, true);
+        push(globs, base, true)
     }
 
     this.uploadScripts = function() {
-        var base = config.ftp.base;
-        var rootDist = appRoot.path + config.app.paths.dist;
+        var base = config.ftp.base
+        var rootDist = appRoot.path + config.app.paths.dist
 
         var globs = [
             rootDist + config.app.watch.scripts
         ]
 
-        push(globs, base, false);
+        push(globs, base, false)
     }
 
     this.clean = function(path) {
-        del(path);
+        del(path)
     }
 }
