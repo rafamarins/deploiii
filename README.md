@@ -21,7 +21,7 @@ autoprefixer
 browserslist
 cssnano
 del
-gulp - "github:gulpjs/gulp#4.0" *IMPORTANT, THIS PROJECT RUNS ON GULP 4.0, IT WON'T WORK ON EARLIER VERSIONS
+gulp *IMPORTANT, THIS PROJECT RUNS ON GULP 4.0, IT WON'T WORK ON EARLIER VERSIONS
 autoprefixer
 gulp-postcss
 gulp-util
