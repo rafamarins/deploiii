@@ -13,42 +13,51 @@ module.exports = function() {
                 sass().on('error', function(err) {
                     gutil.log(gutil.colors.red('[Error]'), err.toString())
                     this.emit('end')
+                    return false;
                 }),
                 postcss(plugins).on('error', function(err) {
                     gutil.log(gutil.colors.red('[Error]'), err.toString())
                     this.emit('end')
+                    return false
                 }),
                 rename(config.app.outputfilename.css),
                 gulp.dest(destination),
                 touch() // For some reason, the output bundle wasn't updating its last modifed date, so add this to make sure if does that.
             ])
-        } else
-            return null;
+        } else {
+            gutil.log(gutil.colors.red('[Error]'), "File doesn't exists, please verify your paths & files -> " + src);
+            return false;
+        }
     }
 
     this.run_uglify = function(src, destination) {
-        pump([
-            gulp.src(src),
-            sourcemaps.init(),
-            gulpif(config.app.output.babelEnabled == true,
-                babel().on('error', function(err) {
-                    gutil.log(gutil.colors.red('[Error]'), err.toString())
-                    this.emit('end')
-                    return false
-                })
-            ),
-            concat(config.app.output.filename.scripts),
-            sourcemaps.write('.'),
-            gulp.dest(destination),            
-            gulpif(config.app.output.uglifyEnabled == true, 
-                uglify().on('error', function(err) {
-                    gutil.log(gutil.colors.red('[Error]'), err.toString())
-                    this.emit('end')
-                    return false 
-                }),
-                gulp.dest(destination)
-            )
-        ])
+        if (filepathExists(src)) {
+            pump([
+                gulp.src(src),
+                sourcemaps.init(),
+                gulpif(config.app.output.babelEnabled == true,
+                    babel().on('error', function(err) {
+                        gutil.log(gutil.colors.red('[Error]'), err.toString())
+                        this.emit('end')
+                        return false
+                    })
+                ),
+                concat(config.app.output.filename.scripts),
+                sourcemaps.write('.'),
+                gulp.dest(destination),
+                gulpif(config.app.output.uglifyEnabled == true,
+                    uglify().on('error', function(err) {
+                        gutil.log(gutil.colors.red('[Error]'), err.toString())
+                        this.emit('end')
+                        return false
+                    }),
+                    gulp.dest(destination)
+                )
+            ])
+        } else {
+            gutil.log(gutil.colors.red('[Error]'), "File doesn't exists, please verify your paths & files -> " + src);
+            return false;
+        }
     }
 
     this.obfuscate = function(src, destination) {
