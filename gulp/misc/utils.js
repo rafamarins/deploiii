@@ -33,7 +33,7 @@ module.exports = function() {
     this.run_uglify = function(src, destination) {
         if (filepathExists(src)) {
             pump([
-                gulp.src(src),
+                gulp.src(['./node_modules/babel-polyfill/dist/polyfill.min.js',src]),
                 sourcemaps.init(),
                 gulpif(config.app.output.babelEnabled == true,
                     babel().on('error', function(err) {
