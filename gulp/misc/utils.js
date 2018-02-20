@@ -42,17 +42,19 @@ module.exports = function() {
                         return false
                     })
                 ),
-                concat(config.app.output.filename.scripts),
-                sourcemaps.write('.'),
-                gulp.dest(destination),
-                gulpif(config.app.output.uglifyEnabled == true,
+                concat(config.app.output.filename.scripts),            
+                strip(),
+                gulp.dest(destination),           
+                gulpif(config.app.output.uglifyEnabled == true, 
                     uglify().on('error', function(err) {
                         gutil.log(gutil.colors.red('[Error]'), err.toString())
                         this.emit('end')
-                        return false
+                        return false 
                     }),
                     gulp.dest(destination)
-                )
+                ),
+                sourcemaps.write('./maps'),
+                gulp.dest(destination)
             ])
         } else {
             gutil.log(gutil.colors.red('[Error]'), "File doesn't exists, please verify your paths & files -> " + src);
