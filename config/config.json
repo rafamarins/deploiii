@@ -7,7 +7,7 @@
             "styles": "",
             "scripts": ""
         },
-        "outputfilename": {
+        "output": {
             "babelEnabled" : false,
             "uglifyEnabled": false,
             "filename": {

@@ -1,7 +1,7 @@
 {
-    "name": "deploiii",
+    "name": "deploiii-example",
     "version": "0.0.1",
-    "description": "Deployment Framework JS & CSS + FTP",
+    "description": "Deployment Framework JS & CSS + FTP Example",
     "main": " ",
     "scripts": {
         "watch": "gulp",
