@@ -8,7 +8,7 @@
             "styles": "/src/sass/", // SASS stylesheet Folder
             "scripts": "/src/scripts/" // Scripts Folder
         },
-        "output": {
+        "outputfilename": {
             "babelEnabled" : false, //Enables Babel JS Transpiling 
             "uglifyEnabled": false, // Enables Uglyfying JS
             "filename": {

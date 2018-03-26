@@ -16,26 +16,7 @@ https://nodejs.org/en/
 All the packages below are required.
 
 ```
-app-root-path
-autoprefixer
-browserslist
-cssnano
-del
-gulp *IMPORTANT, THIS PROJECT RUNS ON GULP 4.0, IT WON'T WORK ON EARLIER VERSIONS
-autoprefixer
-gulp-postcss
-gulp-util
-gulp-concat
-gulp-javascript-obfuscator
-gulp-notify
-gulp-rename
-gulp-sass
-gulp-uglify
-gulp-watch
-postcss-normalize
-pump
-require-dir
-vinyl-ftp
+Check package.json file
 ```
 
 ### Installing
@@ -46,6 +27,7 @@ A step by step series of examples that tell you have to get a development env ru
 Copy all files to your project. 
 Keep in mind of package.json file which contains most of the packages used in this project.
 ```
+
 Then install the packages
 ```
 npm install
@@ -64,10 +46,6 @@ Edit as per required to your project.
 Simply run
 
 ```
-gulp
-```
-or use node tasks
-```
 npm run watch
 ```
 
@@ -77,10 +55,6 @@ Once the task is running your css/js files will be watched and on any updates th
 
 Once you have a final version for your scripts, you can obfuscate them by running the obfuscate task
 
-```
-gulp production
-```
-or use node tasks
 ```
 npm run production
 ```
