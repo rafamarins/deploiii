@@ -1,6 +1,6 @@
 # Deploiii
 
-Small basic Node + Gulp framework to compile SASS & Uglify scripts and optionally upload to server via FTP
+Small basic Node + Gulp framework to compile SASS & ES6 scripts and optionally upload to server via FTP
 
 ## Getting Started
 
