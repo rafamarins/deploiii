@@ -1,11 +1,11 @@
 /* ----- Common Functions ----- */
 
 module.exports = function() {
-    this.run_sass_autoprefixer = function(src, destination, sassConfig, autoprefixerConfig) {
+    this.run_sass_autoprefixer = function(src, destination, autoprefixerConfig, cssnanoConfig ) {
             var plugins = [
                 postcssnormalize,
-                autoprefixer(sassConfig),
-                cssnano
+                autoprefixer(autoprefixerConfig),
+                cssnano(cssnanoConfig)
             ];
             pump([
                 gulp.src(src),

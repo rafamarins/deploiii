@@ -12,8 +12,8 @@ gulp.task('clean_bundle', (done) => {
 gulp.task('sass_autoprefixer_bundle', (done) => {
     run_sass_autoprefixer([appRoot.path + config.app.paths.styles + "/" + config.app.inputfilename.css] // Source
         , appRoot.path + config.app.paths.dist + config.app.paths.distCSS // Destination
-        , {grid: true} //Sass Config
-        , {} // Autoprefixer Config
+        , {grid: true} //Autoprefixer Config
+        , {reduceIdents: false} //cssNano Config -- added due to keyframes renaming issue, this prevents that.
     );
     done();
 });
