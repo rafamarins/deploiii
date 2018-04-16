@@ -1,3 +1,3 @@
-const gulp = require('gulp');
+const gulp = require('gulp')
 
-require('require-dir')('./gulp', { recurse: true });
+require('require-dir')('./gulp', { recurse: true })

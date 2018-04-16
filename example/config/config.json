@@ -4,19 +4,30 @@
             "dist": "/assets/",
             "distCSS": "css/",
             "distJS": "js/",
-            "styles": "/src/sass",
+            "styles": "/src/less",
             "scripts": "/src/js/"
         },
+        "input": {
+            "filename": {
+                "css": "main.less"
+            },
+            "compiler": {
+                "styles": {
+                    "sass": false,
+                    "less": true,
+                    "stylus": false
+                },
+                "scripts": {
+                    "babel": true
+                }
+            }
+        },
         "output": {
-            "babelEnabled" : true,
-            "uglifyEnabled": true,
+            "uglify": true,
             "filename": {
                 "scripts": "bundle.js",
                 "css": "bundle.css"
             }
-        },
-        "inputfilename": {
-            "css": "main.scss"
         },
         "watch": {
             "styles": "css/*.css",

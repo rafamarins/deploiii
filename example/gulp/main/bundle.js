@@ -10,7 +10,7 @@ gulp.task('clean_bundle', (done) => {
 });
 
 gulp.task('sass_autoprefixer_bundle', (done) => {
-    run_sass_autoprefixer([appRoot.path + config.app.paths.styles + "/" + config.app.inputfilename.css] // Source
+    run_sass_autoprefixer([appRoot.path + config.app.paths.styles + "/" + config.app.input.filename.css] // Source
         , appRoot.path + config.app.paths.dist + config.app.paths.distCSS // Destination
         , {grid: true} //Autoprefixer Config
         , {reduceIdents: false} //cssNano Config -- added due to keyframes renaming issue, this prevents that.
@@ -69,7 +69,20 @@ gulp.task('watch:scripts', () => {
 });
 
 gulp.task('watch:styles', () => {
-    gulp.watch(appRoot.path + config.app.paths.styles + '**/*.scss', styles_bundle);
+    
+    gulp.watch(appRoot.path + config.app.paths.styles + 
+        gulpif(config.app.input.compiler.styles.sass === true,
+            '**/*.scss',
+            gulpif(config.app.input.compiler.styles.less === true,
+                '**/*.less',
+            gulpif(config.app.input.compiler.styles.less === true,
+                '**/*.styl'
+            )
+        )
+    ),
+         
+    
+    styles_bundle);
 });
 
 gulp.task('watch', gulp.parallel(

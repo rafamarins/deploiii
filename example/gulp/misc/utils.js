@@ -9,11 +9,27 @@ module.exports = function () {
     ]
     this.pump([
       this.gulp.src(src),
-      this.sass().on('error', function (err) {
-        this.gutil.log(this.gutil.colors.red('[Error]'), err.toString())
-        this.emit('end')
-        return false
-      }),
+      this.gulpif(this.config.app.input.compiler.styles.sass === true,
+        this.sass().on('error', function (err) {
+          this.gutil.log(this.gutil.colors.red('[Error]'), err.toString())
+          this.emit('end')
+          return false
+        }),
+        this.gulpif(this.config.app.input.compiler.styles.less === true,
+          this.less().on('error', function (err) {
+            this.gutil.log(this.gutil.colors.red('[Error]'), err.toString())
+            this.emit('end')
+            return false
+          }),
+          this.gulpif(this.config.app.input.compiler.styles.less === true,
+            this.stylus().on('error', function (err) {
+              this.gutil.log(this.gutil.colors.red('[Error]'), err.toString())
+              this.emit('end')
+              return false
+            })
+          )
+        )
+      ),
       this.postcss(plugins).on('error', function (err) {
         this.gutil.log(this.gutil.colors.red('[Error]'), err.toString())
         this.emit('end')
@@ -29,7 +45,7 @@ module.exports = function () {
     this.pump([
       this.gulp.src(['./node_modules/babel-polyfill/dist/polyfill.min.js', src]),
       this.sourcemaps.init(),
-      this.gulpif(this.config.app.output.babelEnabled === true,
+      this.gulpif(this.config.app.input.compiler.scripts.babel === true,
         this.babel().on('error', function (err) {
           this.gutil.log(this.gutil.colors.red('[Error]'), err.toString())
           this.emit('end')
@@ -39,7 +55,7 @@ module.exports = function () {
       this.concat(this.config.app.output.filename.scripts),
       this.strip(),
       this.gulp.dest(destination),
-      this.gulpif(this.config.app.output.uglifyEnabled === true,
+      this.gulpif(this.config.app.output.uglify === true,
         this.uglify().on('error', function (err) {
           this.gutil.log(this.gutil.colors.red('[Error]'), err.toString())
           this.emit('end')

@@ -8,16 +8,27 @@
             "styles": "/src/sass/", // SASS stylesheet Folder
             "scripts": "/src/scripts/" // Scripts Folder
         },
+        "input": {
+            "filename": {
+                "css": "main.scss" // Main SASS file with all your imports
+            },
+            "compiler": {
+                "styles": { // Order of checking is as below, will only use the first one enabled.
+                    "sass": true,
+                    "less": false,
+                    "stylus": false
+                },
+                "scripts": {
+                    "babel": true //Enables Babel JS Transpiling 
+                }
+            }
+        },
         "output": {
-            "babelEnabled" : false, //Enables Babel JS Transpiling 
-            "uglifyEnabled": false, // Enables Uglyfying JS
+            "uglify": true, // Enables Uglyfying JS
             "filename": {
                 "scripts": "bundle.js", // Output filename for Uglified file
                 "css": "bundle.css" // Output filename for CSS file
             }
-        },
-        "inputfilename": {
-            "css": "main.scss" // Main SASS file with all your imports
         },
         "watch": {
             "styles": "css/*.css", // Folder that Gulp should watch Styles and pushed to Server on changes

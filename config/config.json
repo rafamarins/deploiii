@@ -1,35 +1,46 @@
 {
-    "app": {
-        "paths": {
-            "dist": "",
-            "distCSS": "",
-            "distJS": "",
-            "styles": "",
-            "scripts": ""
-        },
-        "output": {
-            "babelEnabled" : false,
-            "uglifyEnabled": false,
-            "filename": {
-                "scripts": "",
-                "css": ""
-            }
-        },
-        "inputfilename": {
-            "css": ""
-        },
-        "watch": {
-            "styles": "",
-            "scripts": ""
-        }
+  "app": {
+    "paths": {
+      "dist": "",
+      "distCSS": "",
+      "distJS": "",
+      "styles": "",
+      "scripts": ""
     },
-    "ftp": {
-        "enabled": false,
-        "host": "",
-        "user": "",
-        "password": "",
-        "port": 21,
-        "sftp": true,
-        "base": ""
+    "input": {
+      "filename": {
+        "css": ""
+      },
+      "compiler": {
+        "styles": {
+          "sass": true,
+          "less": false,
+          "stylus": false
+        },
+        "scripts": {
+          "babel": true
+        }
+      }
+    },
+    "output": {
+      "uglify": true,
+      "filename": {
+        "scripts": "",
+        "css": ""
+      }
+    },
+    "watch": {
+      "styles": "",
+      "scripts": ""
     }
+  },
+  "ftp": {
+    "enabled": false,
+    "host": "",
+    "user": "",
+    "password": "",
+    "port": 0,
+    "sftp": null,
+    "base": ""
+  }
 }
