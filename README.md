@@ -25,7 +25,7 @@ A step by step series of examples that tell you have to get a development env ru
 
 ```
 Copy all files to your project. 
-Keep in mind of package.json file which contains most of the packages used in this project.
+Keep in mind of package.json file which contains the packages used in this project.
 ```
 
 Then install the packages
