@@ -53,13 +53,13 @@ module.exports = function () {
 
   this.run_uglify = function (src, destination) {
     this.pump([
-      this.gulp.src([
-        './node_modules/babel-polyfill/dist/polyfill.min.js',
-        src
-      ]),
       this.sourcemaps.init(),
       this.gulpif(
         this.config.app.input.compiler.scripts.babel === true,
+        this.gulp.src([
+          './node_modules/babel-polyfill/dist/polyfill.min.js',
+          src
+        ]), // includes polyfill for browser compatibility
         this.babel().on('error', function (err) {
           this.gutil.log(this.gutil.colors.red('[Error]'), err.toString())
           this.emit('end')
