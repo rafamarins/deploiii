@@ -9,6 +9,7 @@ module.exports = function () {
     ]
     this.pump([
       this.gulp.src(src),
+      this.sourcemaps.init(),
       this.gulpif(this.config.app.input.compiler.styles.sass === true,
         this.sass().on('error', function (err) {
           this.gutil.log(this.gutil.colors.red('[Error]'), err.toString())
@@ -36,6 +37,7 @@ module.exports = function () {
         return false
       }),
       this.rename(this.config.app.output.filename.css),
+      this.sourcemaps.write('./maps'),
       this.gulp.dest(destination),
       this.touch() // For some reason, the output bundle wasn't updating its last modifed date, so add this to make sure if does that.
     ])
