@@ -80,8 +80,6 @@ gulp.task('watch:styles', () => {
             )
         )
     ),
-         
-    
     styles_bundle);
 });
 

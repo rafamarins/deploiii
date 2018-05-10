@@ -84,10 +84,17 @@ gulp.task("watch:scripts", () => {
 });
 
 gulp.task("watch:styles", () => {
-  gulp.watch(
-    appRoot.path + config.app.paths.styles + "**/*.scss",
-    styles_bundle
-  );
+  gulp.watch(appRoot.path + config.app.paths.styles +
+    gulpif(config.app.input.compiler.styles.sass === true,
+      '**/*.scss',
+      gulpif(config.app.input.compiler.styles.less === true,
+        '**/*.less',
+        gulpif(config.app.input.compiler.styles.less === true,
+          '**/*.styl'
+        )
+      )
+    ),
+    styles_bundle);
 });
 
 gulp.task("watch", gulp.parallel("watch:scripts", "watch:styles"));
