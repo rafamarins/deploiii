@@ -5,6 +5,5 @@
   "plugins": ["compat"],
   "rules": {
     "compat/compat": "error"
-  },
-  "indent": ["error", "tab"]
+  }
 }
