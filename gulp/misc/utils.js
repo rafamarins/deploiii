@@ -1,6 +1,6 @@
 /* ----- Common Functions ----- */
 
-export default function () {
+module.exports = function () {
   this.run_sass_autoprefixer = function (src, destination, autoprefixerConfig, cssnanoConfig) {
     var plugins = [
       this.postcssnormalize,
